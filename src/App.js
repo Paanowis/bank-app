@@ -1,26 +1,58 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import Accounts from './Accounts';
+import AddAccount from './AddAccount';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component { 
+  state = {
+    accounts : [
+      { accountname: "Paa Qwesi Nowis", accountnumber: "1234567890", bankname: "International Bureau Bank", bankbranch: "Nungua", id: 1 },
+      { accountname: "Paa Qwesi Nowis", accountnumber: "1234567891", bankname: "Universal Hold Bank", bankbranch: "Teshie", id: 2 },
+      { accountname: "Paa Qwesi Nowis", accountnumber: "1234567892", bankname: "World Agricultural Bank", bankbranch: "Tema", id: 3 },
+      { accountname: "Paa Qwesi Nowis", accountnumber: "1234567893", bankname: "Africa Development Bank", bankbranch: "Osu", id: 4 }
+    ],
+  }
+
+
+  addAccount = (account) => {
+    account.id = Math.random();
+    let accounts = [...this.state.accounts, account];
+    this.setState({
+      accounts: accounts
+    })
+  }
+
+  deleteAccount = (id) => {
+     const accounts = this.state.accounts.filter(account => {
+       return account.id !== id
+     });
+     this.setState({
+       accounts: accounts
+     })
+  }
+
+  edit = (id, editedAccount) => {
+    console.log('id:'+ id,  editedAccount.accountname)
+    const editedAccounts = this.state.accounts.map(account => {
+        if(account.id===id){
+            return {...account, editedAccount}
+        }
+        return account;
+    });
+    this.setState({
+        accounts: editedAccounts
+    }) 
 }
+
+  render(){
+    return (
+      <div className="App">
+        <h1>MANAGE ACCOUNTS</h1>
+        <Accounts editAccount={this.edit} deleteAccount={this.deleteAccount} accounts={this.state.accounts} />
+        <AddAccount addAccount={this.addAccount} />
+      </div>
+    );
+  }
+}
+
 
 export default App;

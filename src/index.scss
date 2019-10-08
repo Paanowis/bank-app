@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+body {
+    background-color: aquamarine;
+}
+
+.App {
+    margin: 20px;
+    padding: 20px;
+
+    h1 {
+        text-align: center;
+    }
+}
+
+.account-list {
+    float: left;
+    width: 40%;
+    margin: 40px;
+
+    h2 {
+        text-align: center;
+        margin-left: 30px;
+    }
+}
+
+.accounts{
+    border: 2px solid #000;
+    margin: 10px;
+    padding: 10px;
+    width: 100%;
+
+    button {
+        padding: 3px;
+        margin: 5px;
+    }
+}
+
+.add-account {
+    width: 40%;
+    float: left;
+    margin: 60px;
+    margin-top: 150px;
+    padding: 15px;
+    border: 2px solid #000;
+    
+    h2 {
+        text-align: center;
+        margin: 20px;
+        margin-bottom: 40px;
+    };
+
+    form {
+        margin: 0 90px;
+
+        button {
+            padding: 5px;
+            width: 80px;
+            margin-left: 7rem;
+            background-color: crimson;
+        }
+    }
+}
+
+.account-update {
+    border: 2px solid #000;
+    margin: 10px;
+    padding: 10px;
+    width: 100%;
+
+    button {
+        padding: 3px;
+        margin: 5px;
+    }
+}
