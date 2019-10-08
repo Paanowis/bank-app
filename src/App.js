@@ -31,10 +31,14 @@ class App extends Component {
   }
 
   edit = (id, editedAccount) => {
+    console.log("edited", editedAccount);
+    
     console.log('id:'+ id,  editedAccount.accountname)
     const editedAccounts = this.state.accounts.map(account => {
         if(account.id===id){
-            return {...account, editedAccount}
+          console.log(account);
+          
+            return {...account, ...editedAccount}
         }
         return account;
     });

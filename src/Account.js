@@ -4,16 +4,19 @@ class Account extends React.Component{
 
     constructor(props){
         super(props);
+        const { accountname, accountnumber, bankname, bankbranch } = this.props.account;
         this.state = {
             isEditing: false,
-            accountname: " ",
-            accountnumber: " ",
-            bankname: " ",
-            bankbranch: " "
+            accountname,
+            accountnumber,
+            bankname,
+            bankbranch
         };
     }
 
     handleChange =(e) => {
+        console.log({[e.target.id]: e.target.value});
+        
         this.setState({
             [e.target.id]: e.target.value
         })
@@ -29,7 +32,6 @@ class Account extends React.Component{
     }
 
     render(){ 
-        const { accountname, accountnumber, bankname, bankbranch } = this.props.account;
             return (
                 <div className="account" key={this.props.account.id}>
                    
@@ -43,7 +45,7 @@ class Account extends React.Component{
                                         type="text" 
                                         id="accountname" 
                                         onChange={this.handleChange} 
-                                        placeholder={accountname} />
+                                        value={this.state.accountname} />
                                     </div>
                                     <div>
                                         <label htmlFor="accountnumber">Account Number:</label>
@@ -51,7 +53,7 @@ class Account extends React.Component{
                                         type="number" 
                                         id="accountnumber" 
                                         onChange={this.handleChange} 
-                                        placeholder={accountnumber}/>
+                                        value={this.state.accountnumber}/>
                                     </div>
                                     <div>
                                         <label htmlFor="bankname">Bank Name:</label>
@@ -59,7 +61,7 @@ class Account extends React.Component{
                                         type="text" 
                                         id="bankname" 
                                         onChange={this.handleChange} 
-                                        placeholder={bankname} />
+                                        value={this.state.bankname} />
                                     </div>
                                     <div>
                                         <label htmlFor="bankbranch">Bank Branch:</label>
@@ -67,7 +69,7 @@ class Account extends React.Component{
                                         type="text" 
                                         id="bankbranch" 
                                         onChange={this.handleChange} 
-                                        placeholder={bankbranch} />
+                                        value={this.state.bankbranch} />
                                     </div>
                                     <div>
                                         <button>Save</button>
